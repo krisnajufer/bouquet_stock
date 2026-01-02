@@ -1,0 +1,80 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-01-02 21:15:26.782221",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "material",
+  "current_qty",
+  "lead_time",
+  "safety_stock",
+  "min",
+  "max"
+ ],
+ "fields": [
+  {
+   "fieldname": "material",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Material",
+   "options": "Material",
+   "read_only": 1
+  },
+  {
+   "fieldname": "lead_time",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Lead Time",
+   "non_negative": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "safety_stock",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Safety Stock",
+   "non_negative": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "min",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Min",
+   "non_negative": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "max",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Max",
+   "non_negative": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "current_qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Qty Saat Ini",
+   "read_only": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-01-02 21:20:35.521673",
+ "modified_by": "Administrator",
+ "module": "Bouquet Stock",
+ "name": "Purchase Order Min Max",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
