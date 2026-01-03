@@ -40,12 +40,14 @@
    "fieldname": "material",
    "fieldtype": "Link",
    "label": "Material",
-   "options": "Material"
+   "options": "Material",
+   "read_only": 1
   },
   {
    "fieldname": "posting_date",
    "fieldtype": "Date",
-   "label": "Posting Date"
+   "label": "Posting Date",
+   "read_only": 1
   },
   {
    "fieldname": "posting_time",
@@ -68,7 +70,6 @@
    "fieldname": "qty_change",
    "fieldtype": "Float",
    "label": "Qty Change",
-   "non_negative": 1,
    "read_only": 1
   },
   {
@@ -113,7 +114,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-01-03 10:48:30.594480",
+ "modified": "2026-01-04 00:08:57.622029",
  "modified_by": "Administrator",
  "module": "Bouquet Stock",
  "name": "Stock Ledger Entry",

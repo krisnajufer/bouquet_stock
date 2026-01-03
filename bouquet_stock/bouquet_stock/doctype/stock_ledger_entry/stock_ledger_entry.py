@@ -21,6 +21,15 @@ def make_sle(parent, child):
 	sle.qty_after_transaction = last_qty_change + qty
 	sle.save()
 	update_material_stock(child.material)
+	filters = {
+		"document_type" : parent.doctype,
+		"document_name" : parent.name,
+		"material": child.material
+	}
+	current_sle = frappe.db.get_value("Stock Ledger Entry", filters, "*")
+	repost_future_sle(child.material, parent.posting_date, parent.posting_time, current_sle)
+	if parent.doctype in ("Purchase Receipt"):
+		min_max_update(sle, child)
 
 def calculate_past_sle(material, posting_date, posting_time, modified):
 	filters = {
@@ -47,7 +56,6 @@ def cancel_sle(parent, child):
 	
 	frappe.db.set_value("Stock Ledger Entry", filters, "is_cancelled", 1)
 	current_sle = frappe.db.get_value("Stock Ledger Entry", filters, "*")
-
 	repost_future_sle(child.material, parent.posting_date, parent.posting_time, current_sle)
 	update_material_stock(child.material)
 	
@@ -94,11 +102,10 @@ def update_material_stock(material):
 		stock,
 		{
 			"actual_qty": qty["actual_qty"],
-			"in_qty": qty["in_qty"]
+			"in_qty": qty["in_qty"],
+			"out_qty": qty["out_qty"]
 		}
 	)
-
-
 
 def calculate_material_stock(material):
 	result = frappe.db.sql(
@@ -111,7 +118,14 @@ def calculate_material_stock(material):
 					THEN qty_change 
 					ELSE 0 
 				END
-			), 0) AS in_qty
+			), 0) AS in_qty,
+			COALESCE(SUM(
+				CASE 
+					WHEN document_type IN ('Manufacture', 'Material Issue') 
+					THEN qty_change 
+					ELSE 0 
+				END
+			), 0) * -1 AS out_qty
 		FROM `tabStock Ledger Entry`
 		WHERE material = %(material)s AND is_cancelled = 0
 		""",
@@ -120,3 +134,25 @@ def calculate_material_stock(material):
 	)[0]
 
 	return result
+
+def min_max_update(sle, child):
+    filters = {
+		"parent": child.purchase_order,
+		"material": sle.material
+	}
+    min_max = frappe.db.get_value("Purchase Order Min Max", filters, "*")
+    if not min_max:
+        return
+    sle.lead_time = min_max.lead_time
+    sle.safety_stock = min_max.safety_stock
+    sle.min = min_max.min
+    sle.max = min_max.max
+    sle.save()
+    
+    values = {
+		"safety_stock": min_max.safety_stock,
+		"min": min_max.min,
+		"max": min_max.max,
+	}
+    
+    frappe.db.set_value("Material Stock", {"material": sle.material}, values)
