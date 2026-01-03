@@ -10,6 +10,7 @@
   "section_break_xnxi",
   "posting_date",
   "posting_time",
+  "bouquets",
   "materials",
   "amended_from"
  ],
@@ -35,7 +36,8 @@
    "fieldname": "materials",
    "fieldtype": "Table",
    "label": "Materials",
-   "options": "Manufacture Material Item"
+   "options": "Manufacture Material Item",
+   "read_only": 1
   },
   {
    "fieldname": "amended_from",
@@ -46,13 +48,19 @@
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
+  },
+  {
+   "fieldname": "bouquets",
+   "fieldtype": "Table",
+   "label": "Bouquets",
+   "options": "Manufacture Bouquet Item"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-12-22 22:02:04.778034",
+ "modified": "2026-01-03 13:58:55.053131",
  "modified_by": "Administrator",
  "module": "Bouquet Stock",
  "name": "Manufacture",
