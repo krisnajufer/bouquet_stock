@@ -23,7 +23,8 @@
    "label": "Material",
    "options": "Material",
    "read_only": 1,
-   "reqd": 1
+   "reqd": 1,
+   "unique": 1
   },
   {
    "default": "0",
@@ -76,7 +77,7 @@
  "in_create": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-01-02 21:46:09.611643",
+ "modified": "2026-01-03 11:06:34.003126",
  "modified_by": "Administrator",
  "module": "Bouquet Stock",
  "name": "Material Stock",

@@ -2,12 +2,13 @@
  "actions": [],
  "allow_import": 1,
  "allow_rename": 1,
- "autoname": "format:PREC-{MM}-{YYYY}-{#####}",
+ "autoname": "naming_series:",
  "creation": "2025-12-22 21:40:21.885540",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "section_break_xnxi",
+  "naming_series",
   "supplier",
   "posting_date",
   "posting_time",
@@ -55,17 +56,25 @@
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
+  },
+  {
+   "default": "PREC-.MM.-.YYYY.-",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Naming Series",
+   "options": "PREC-.MM.-.YYYY.-"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-12-22 21:57:40.621203",
+ "modified": "2026-01-03 10:47:59.548442",
  "modified_by": "Administrator",
  "module": "Bouquet Stock",
  "name": "Purchase Receipt",
- "naming_rule": "Expression",
+ "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {

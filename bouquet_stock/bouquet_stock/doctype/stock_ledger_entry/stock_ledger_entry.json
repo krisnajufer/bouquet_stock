@@ -1,11 +1,12 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "format:SLE-{MM}-{YYYY}-{#####}",
+ "autoname": "naming_series:",
  "creation": "2025-12-22 21:46:22.828983",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "naming_series",
   "document_type",
   "document_name",
   "material",
@@ -99,16 +100,24 @@
    "fieldtype": "Float",
    "label": "Max",
    "read_only": 1
+  },
+  {
+   "default": "SLE-.MM.-.YYYY.-",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series",
+   "options": "SLE-.MM.-.YYYY.-",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-22 21:52:32.648915",
+ "modified": "2026-01-03 10:48:30.594480",
  "modified_by": "Administrator",
  "module": "Bouquet Stock",
  "name": "Stock Ledger Entry",
- "naming_rule": "Expression",
+ "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {

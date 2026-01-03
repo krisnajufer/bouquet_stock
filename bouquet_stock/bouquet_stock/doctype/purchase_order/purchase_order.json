@@ -2,12 +2,13 @@
  "actions": [],
  "allow_import": 1,
  "allow_rename": 1,
- "autoname": "format:PO-{MM}-{YYYY}-{#####}",
+ "autoname": "naming_series:",
  "creation": "2025-12-22 21:28:00.555644",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "section_break_xnxi",
+  "naming_series",
   "supplier",
   "supplier_name",
   "posting_date",
@@ -80,17 +81,25 @@
    "label": "Min Max",
    "options": "Purchase Order Min Max",
    "read_only": 1
+  },
+  {
+   "default": "PO-.MM.-.YYYY.-",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Naming Series",
+   "options": "PO-.MM.-.YYYY.-"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-01-02 23:43:05.801346",
+ "modified": "2026-01-03 10:49:08.595667",
  "modified_by": "Administrator",
  "module": "Bouquet Stock",
  "name": "Purchase Order",
- "naming_rule": "Expression",
+ "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {

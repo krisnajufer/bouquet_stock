@@ -3,7 +3,7 @@
 
 frappe.ui.form.on("Purchase Order", {
 	refresh(frm) {
-
+        showBtnCreatePrec(frm);
 	},
 });
 
@@ -46,4 +46,20 @@ function calculateGrandTotal(frm){
 
     frm.set_value("grand_total", grandTotal);
     frm.refresh_field("grand_total");
+}
+
+function showBtnCreatePrec(frm) {
+    if (frm.doc.docstatus != 1) {
+        return
+    }
+    frm.add_custom_button("Purchase Receipt", () => {
+        makePurchaseReceipt(frm)
+    }, "Create")
+}
+
+function makePurchaseReceipt(frm) {
+    frappe.model.open_mapped_doc({
+        method: "bouquet_stock.bouquet_stock.doctype.purchase_order.purchase_order.make_purchase_receipt",
+        frm: frm,
+    }); 
 }

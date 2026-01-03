@@ -1,9 +1,23 @@
 # Copyright (c) 2025, Jufer and contributors
 # For license information, please see license.txt
 
-# import frappe
+import frappe
 from frappe.model.document import Document
-
+from bouquet_stock.bouquet_stock.doctype.stock_ledger_entry.stock_ledger_entry import (
+	make_sle,
+	cancel_sle
+)
 
 class PurchaseReceipt(Document):
-	pass
+	def on_submit(self):
+		self.process_stock_ledger_entries()
+
+	def on_cancel(self):
+		self.process_stock_ledger_entries(cancelled=True)
+
+	def process_stock_ledger_entries(self, cancelled=False):
+		for child in self.materials:
+			if cancelled:
+				cancel_sle(self, child)
+			else:
+				make_sle(self, child)
