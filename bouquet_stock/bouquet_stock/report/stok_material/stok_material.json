@@ -11,7 +11,7 @@
  "is_standard": "Yes",
  "json": "{}",
  "letter_head": null,
- "modified": "2026-01-28 19:39:45.344838",
+ "modified": "2026-01-28 20:30:52.212238",
  "modified_by": "Administrator",
  "module": "Bouquet Stock",
  "name": "Stok Material",
@@ -19,16 +19,10 @@
  "prepared_report": 0,
  "ref_doctype": "Stock Ledger Entry",
  "report_name": "Stok Material",
- "report_type": "Report Builder",
+ "report_type": "Script Report",
  "roles": [
   {
    "role": "System Manager"
-  },
-  {
-   "role": "Owner"
-  },
-  {
-   "role": "Admin Toko"
   }
  ],
  "timeout": 0

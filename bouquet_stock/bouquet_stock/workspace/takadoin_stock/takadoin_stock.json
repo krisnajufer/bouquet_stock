@@ -1,10 +1,5 @@
 {
- "charts": [
-  {
-   "chart_name": "Manufacture",
-   "label": "Manufacture"
-  }
- ],
+ "charts": [],
  "content": "[{\"id\":\"9u83mFxUZ9\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Takadoin Stock</span>\",\"col\":12}},{\"id\":\"dSmbHlx8f2\",\"type\":\"card\",\"data\":{\"card_name\":\"Master\",\"col\":4}},{\"id\":\"Zszc5BNtYB\",\"type\":\"card\",\"data\":{\"card_name\":\"Transaksi\",\"col\":4}},{\"id\":\"CW0fMZGpr7\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Manufacture\",\"col\":12}}]",
  "creation": "2026-01-04 12:02:53.873458",
  "custom_blocks": [],
@@ -18,45 +13,6 @@
  "is_hidden": 0,
  "label": "Takadoin Stock",
  "links": [
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Master",
-   "link_count": 3,
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Material",
-   "link_count": 0,
-   "link_to": "Material",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Bouquet",
-   "link_count": 0,
-   "link_to": "Bouquet",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "User",
-   "link_count": 0,
-   "link_to": "User",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
   {
    "hidden": 0,
    "is_query_report": 0,
@@ -105,9 +61,38 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Master",
+   "link_count": 2,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Material",
+   "link_count": 0,
+   "link_to": "Material",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Bouquet",
+   "link_count": 0,
+   "link_to": "Bouquet",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2026-01-04 12:14:10.111974",
+ "modified": "2026-01-28 20:26:49.930269",
  "modified_by": "Administrator",
  "module": "Bouquet Stock",
  "name": "Takadoin Stock",
@@ -116,11 +101,7 @@
  "parent_page": "",
  "public": 1,
  "quick_lists": [],
- "roles": [
-  {
-   "role": "Owner"
-  }
- ],
+ "roles": [],
  "sequence_id": 1.0,
  "shortcuts": [],
  "title": "Takadoin Stock"

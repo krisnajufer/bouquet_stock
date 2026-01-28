@@ -8,10 +8,10 @@ from frappe.model.document import Document
 class Material(Document):
 
 	def after_insert(self):
-		make_material_stock(self.material_name)
+		make_material_stock(self.name)
 
 	def on_trash(self):
-		delete_material_stock(self.material_name)
+		delete_material_stock(self.name)
 
 def make_material_stock(material):
     material_stock = frappe.new_doc("Material Stock")

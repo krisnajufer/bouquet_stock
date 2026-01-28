@@ -2,7 +2,7 @@
  "actions": [],
  "allow_import": 1,
  "allow_rename": 1,
- "autoname": "field:material_name",
+ "autoname": "M-.#####",
  "creation": "2025-12-22 21:19:31.476061",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -14,6 +14,7 @@
    "fieldname": "material_name",
    "fieldtype": "Data",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Nama Material",
    "reqd": 1,
    "unique": 1
@@ -28,11 +29,11 @@
    "link_fieldname": "material"
   }
  ],
- "modified": "2026-01-02 21:43:18.233567",
+ "modified": "2026-01-28 20:33:01.542266",
  "modified_by": "Administrator",
  "module": "Bouquet Stock",
  "name": "Material",
- "naming_rule": "By fieldname",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {
