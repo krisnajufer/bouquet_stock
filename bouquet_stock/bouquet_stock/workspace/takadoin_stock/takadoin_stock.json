@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"9u83mFxUZ9\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Takadoin Stock</span>\",\"col\":12}},{\"id\":\"dSmbHlx8f2\",\"type\":\"card\",\"data\":{\"card_name\":\"Master\",\"col\":4}},{\"id\":\"Zszc5BNtYB\",\"type\":\"card\",\"data\":{\"card_name\":\"Transaksi\",\"col\":4}},{\"id\":\"CW0fMZGpr7\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Manufacture\",\"col\":12}}]",
+ "content": "[{\"id\":\"9u83mFxUZ9\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Takadoin Stock</span>\",\"col\":12}},{\"id\":\"dSmbHlx8f2\",\"type\":\"card\",\"data\":{\"card_name\":\"Master\",\"col\":4}},{\"id\":\"Zszc5BNtYB\",\"type\":\"card\",\"data\":{\"card_name\":\"Transaksi\",\"col\":4}},{\"id\":\"0OkI2ZE_mB\",\"type\":\"card\",\"data\":{\"card_name\":\"Report\",\"col\":4}}]",
  "creation": "2026-01-04 12:02:53.873458",
  "custom_blocks": [],
  "docstatus": 0,
@@ -90,9 +90,28 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Report",
+   "link_count": 1,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Stok Material",
+   "link_count": 0,
+   "link_to": "Stok Material",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2026-01-28 20:26:49.930269",
+ "modified": "2026-01-28 21:45:46.259817",
  "modified_by": "Administrator",
  "module": "Bouquet Stock",
  "name": "Takadoin Stock",

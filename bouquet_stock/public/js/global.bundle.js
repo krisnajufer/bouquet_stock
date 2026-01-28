@@ -25,8 +25,12 @@
         let rows = data.map(d => `
             <tr>
                 <td>${d.material}</td>
+                <td>${d.material_name}</td>
                 <td>${d.actual_qty}</td>
+                <td>${d.safety_stock}</td>
                 <td>${d.min}</td>
+                <td>${d.max}</td>
+                <td></td>
             </tr>
         `).join('');
 
@@ -45,8 +49,12 @@
                             <thead>
                                 <tr>
                                     <th>Material</th>
+                                    <th>Nama Material</th>
                                     <th>Stok Aktual</th>
-                                    <th>Stok Minimum</th>
+                                    <th>Safety Stock</th>
+                                    <th>Min</th>
+                                    <th>Max</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>${rows}</tbody>
@@ -54,6 +62,7 @@
                     `
                 }
             ],
+            size: 'extra-large',
             primary_action_label: __('Pesan'),
             primary_action() {
                 dialog.hide();

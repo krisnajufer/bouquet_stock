@@ -13,8 +13,11 @@ def get_critical_stock():
     return frappe.db.sql("""
         SELECT
             material,
+            material_name,
             actual_qty,
-            `min`
-        FROM `tabMaterial Stock`
+            `min`,
+            `max`,
+            `safety_stock`
+        FROM `tabMaterial Stock` AS ms
         WHERE actual_qty <= `min`
     """, as_dict=True)

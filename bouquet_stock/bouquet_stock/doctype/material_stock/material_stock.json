@@ -7,6 +7,7 @@
  "engine": "InnoDB",
  "field_order": [
   "material",
+  "material_name",
   "actual_qty",
   "in_qty",
   "out_qty",
@@ -72,17 +73,24 @@
   {
    "fieldname": "column_break_vwhv",
    "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "material.material_name",
+   "fieldname": "material_name",
+   "fieldtype": "Data",
+   "label": "Nama Material",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "in_create": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-01-03 23:38:54.126726",
+ "modified": "2026-01-28 21:38:41.224886",
  "modified_by": "Administrator",
  "module": "Bouquet Stock",
  "name": "Material Stock",
- "naming_rule": "Expression",
+ "naming_rule": "Expression (old style)",
  "owner": "Administrator",
  "permissions": [
   {

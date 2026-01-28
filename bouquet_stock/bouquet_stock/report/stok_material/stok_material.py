@@ -26,7 +26,7 @@ def get_columns():
 		},
 		{
 			"fieldtype": "Int",
-			"fieldname": "current_qty",
+			"fieldname": "actual_qty",
 			"label": "Qty Saat Ini",
 			"width": 200,
 			"default": 0
@@ -58,74 +58,29 @@ def get_columns():
 
 def get_data(filters):
 	
-	SLE = frappe.qb.DocType("Stock Ledger Entry")
+	MS = frappe.qb.DocType("Material Stock")
 	Material = frappe.qb.DocType("Material")
 
-	stock_query = (
+	query = (
 		frappe.qb.from_(Material)
 		.select(
-			Material.name.as_("material_code"), Material.material_name, Sum(Coalesce(SLE.qty_change, 0)).as_("current_qty")
+			Material.name.as_("material_code"), Material.material_name, MS.actual_qty, MS.safety_stock, MS.min, MS.max
 		)
-		.left_join(SLE)
-		.on(SLE.material == Material.name)
+		.left_join(MS)
+		.on(MS.material == Material.name)
 	)
 
 	if filters and filters.get("material_name"):
 		material_name = filters.get("material_name")
-		stock_query = (
-			stock_query.where(
+		query = (
+			query.where(
 				Material.material_name.like(f"%{material_name}%")
 			)
 		)
 
-	stock_query = (
-		stock_query.groupby(Material.name)
+	query = (
+		query.groupby(Material.name)
 	)
 
-	method_query = (
-		frappe.qb.from_(Material)
-		.select(
-			Material.name, Coalesce(SLE.safety_stock, 0).as_("safety_stock"), Coalesce(SLE.min, 0).as_("min"), Coalesce(SLE.max, 0).as_("max")
-		)
-		.left_join(SLE)
-		.on(SLE.material == Material.name)
-	)
 
-	if filters and filters.get("material_name"):
-		material_name = filters.get("material_name")
-		method_query = (
-			method_query.where(
-				Material.material_name.like(f"%{material_name}%")
-			)
-		)
-
-	method_query = (
-		method_query.groupby(Material.name)
-		.orderby(SLE.posting_date, order=Order.desc)
-		.orderby(SLE.posting_time, order=Order.desc)
-		.orderby(SLE.creation, order=Order.desc)
-		.limit(1)	
-	)
-	
-	res_stock = stock_query.run(as_dict=True)
-	res_method = method_query.run(as_dict=True)
-
-	method_qty = {}
-
-	for row in res_method:
-		method_qty.update(
-			{
-				row.name : frappe._dict({
-					"safety_stock": row.safety_stock,
-					"min": row.min,
-					"max": row.max,
-				})
-			})
-		
-	for idx, row in enumerate(res_stock):
-		if row.get("material_code") not in method_qty:
-			continue
-		key = row.get("material_code") 
-		res_stock[idx].update(method_qty.get(key))
-
-	return res_stock
+	return query.run(as_dict=True)
