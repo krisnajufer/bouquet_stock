@@ -103,6 +103,10 @@ function checkMinMax(frm, cdt, cdn) {
         if (curRow.material != row.material) {
             continue
         }
+
+        if (row.max == 0) {
+            return
+        }
         
         if (curRow.qty > (row.max - row.current_qty)) {
             frappe.model.set_value(cdt, cdn, "qty", (row.max - row.current_qty));

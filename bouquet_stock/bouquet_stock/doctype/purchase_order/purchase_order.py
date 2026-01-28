@@ -9,11 +9,22 @@ from frappe.utils import(
 )
 
 class PurchaseOrder(Document):
+	def validate(self):
+		total = 0
+		for row in self.materials:
+			row.amount = row.qty * row.price
+
+			total += row.amount
+		self.grand_total = total
+
 	def on_submit(self):
 		self.db_set("status", "Dipesan")
 
 	def on_cancel(self):
 		self.db_set("status", None)
+
+	def on_trash(self):
+		frappe.db.delete("Stock Ledger Entry", {"document_name": self.name})
 
 	@frappe.whitelist()
 	def calculate_method(self):
@@ -28,7 +39,7 @@ class PurchaseOrder(Document):
 				"lead_time": 2,
 				"material": row.material
 			})
-			row.qty =  result["max"] - result["current_qty"]
+			row.qty =  result["max"] - result["current_qty"] if result["max"] > 0 else row.qty
 
 	def get_min_max(self, row):
 		lead_time = 2
