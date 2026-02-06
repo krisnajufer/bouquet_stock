@@ -8,6 +8,8 @@ from frappe.utils import(
 	nowtime
 )
 
+from bouquet_stock.bouquet_stock.doctype.material_stock.material_stock import get_critical_stock
+
 class PurchaseOrder(Document):
 	def validate(self):
 		total = 0
@@ -102,3 +104,34 @@ def make_purchase_receipt(source_name, target_doc=None):
 	)
 
 	return doc
+
+
+@frappe.whitelist()
+def filter_materials(doctype, txt, searchfield, start, page_len, filters):
+	critical_stocks = get_critical_stock()
+
+	material_criticals = []
+
+	for row in critical_stocks:
+		material_criticals.append(row.material)
+
+	if not material_criticals:
+		return []
+
+	Material = frappe.qb.DocType(doctype)
+	txt =f"%{txt}%"
+	query = (
+		frappe.qb.from_(Material)
+		.select(Material.name.as_("value"), Material.material_name.as_("text"))
+		.where(
+			(Material.name.isin(material_criticals))
+		)
+		.where(
+			(Material.name.like(txt))
+			| (Material.material_name.like(txt))
+		)
+	)
+
+	result = query.run()
+
+	return result

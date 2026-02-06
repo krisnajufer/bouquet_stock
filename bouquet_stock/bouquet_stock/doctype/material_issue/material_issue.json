@@ -12,6 +12,7 @@
   "posting_time",
   "purpose",
   "material",
+  "material_name",
   "qty",
   "amended_from"
  ],
@@ -76,13 +77,20 @@
    "fieldtype": "Time",
    "label": "Posting Time",
    "reqd": 1
+  },
+  {
+   "fetch_from": "material.material_name",
+   "fieldname": "material_name",
+   "fieldtype": "Data",
+   "label": "Nama Material",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-01-03 23:36:04.008966",
+ "modified": "2026-02-06 21:26:05.875527",
  "modified_by": "Administrator",
  "module": "Bouquet Stock",
  "name": "Material Issue",

@@ -31,6 +31,7 @@
                     <button 
                         class="btn btn-sm btn-primary order-item"
                         data-item="${d.material}"
+                        data-name="${d.material_name}"
                         data-qty="${d.max - d.actual_qty || 1}">
                         Pesan
                     </button>
@@ -72,10 +73,12 @@
       dialog.$wrapper.on("click", ".order-item", function() {
         const material = $(this).data("item");
         const qty = $(this).data("qty");
+        const material_name = $(this).data("name");
         frappe.route_options = {
           materials: [
             {
               material,
+              material_name,
               qty
             }
           ]
@@ -90,4 +93,4 @@
     });
   })();
 })();
-//# sourceMappingURL=global.bundle.ZNYDTNQ5.js.map
+//# sourceMappingURL=global.bundle.KUP5WIJW.js.map

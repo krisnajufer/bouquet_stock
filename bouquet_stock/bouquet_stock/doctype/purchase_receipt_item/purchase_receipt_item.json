@@ -7,6 +7,7 @@
  "engine": "InnoDB",
  "field_order": [
   "material",
+  "material_name",
   "qty",
   "price",
   "amount",
@@ -62,13 +63,20 @@
    "label": "PO Item",
    "options": "Purchase Order Item",
    "read_only": 1
+  },
+  {
+   "fetch_from": "material.material_name",
+   "fieldname": "material_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Nama Material"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-12-22 21:43:16.180057",
+ "modified": "2026-02-06 21:28:09.788731",
  "modified_by": "Administrator",
  "module": "Bouquet Stock",
  "name": "Purchase Receipt Item",

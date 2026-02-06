@@ -4,6 +4,7 @@
 frappe.ui.form.on("Purchase Order", {
 	refresh(frm) {
         showBtnCreatePrec(frm);
+        filterMaterials(frm);
 	},
     posting_date(frm){
         calculateMinMax(frm)
@@ -53,7 +54,7 @@ function calculateGrandTotal(frm){
 }
 
 function showBtnCreatePrec(frm) {
-    if (frm.doc.docstatus != 1) {
+    if (frm.doc.docstatus != 1 || frm.doc.status == "Diterima Sepenuhnya") {
         return
     }
     frm.add_custom_button("Purchase Receipt", () => {
@@ -114,4 +115,12 @@ function checkMinMax(frm, cdt, cdn) {
     }
 
     frm.refresh_field("materials");
+}
+
+function filterMaterials(frm) {
+    frm.set_query("material", "materials", (doc) => {
+        return {
+            query:"bouquet_stock.bouquet_stock.doctype.purchase_order.purchase_order.filter_materials"
+        }
+    })
 }
