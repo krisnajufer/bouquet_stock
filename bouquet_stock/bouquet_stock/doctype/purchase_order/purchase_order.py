@@ -84,6 +84,7 @@ def make_purchase_receipt(source_name, target_doc=None):
 		for row in target.materials:
 			row.purchase_order = source.name
 		target.update({"posting_time": nowtime()})
+		target.update({"name": None})
 
 	doc = get_mapped_doc(
 		"Purchase Order",

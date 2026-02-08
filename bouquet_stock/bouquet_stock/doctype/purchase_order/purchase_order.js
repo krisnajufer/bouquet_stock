@@ -3,6 +3,7 @@
 
 frappe.ui.form.on("Purchase Order", {
 	refresh(frm) {
+        frm.ignore_doctypes_on_cancel_all = ["Purchase Receipt"];
         showBtnCreatePrec(frm);
         filterMaterials(frm);
 	},

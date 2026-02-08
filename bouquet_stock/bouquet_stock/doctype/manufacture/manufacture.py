@@ -53,8 +53,10 @@ def calculate_material_bouquet(bouquet_name, bouquet_qty):
 	material_needs = []
 	for row in bouquet.bouquet_material:
 		actual_qty = frappe.db.get_value("Material Stock", {"material": row.material}, "actual_qty")
+		material_name = frappe.db.get_value("Material", row.material, "material_name")
 		value = {
 			"material": row.material,
+			"material_name": material_name,
 			"qty": float(row.qty) * float(bouquet_qty),
 			"current_qty": actual_qty,
 			"status": "Cukup"
